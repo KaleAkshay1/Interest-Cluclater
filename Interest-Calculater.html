@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 95vh;
+            background-color: rgb(232, 231, 231);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+        }
+        .currency-container{
+            min-width: 300px;
+            min-height: 300px;
+            border-radius: 5px;
+            box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+            background-color: white;
+            text-align: center;
+        }
+        .currency-container p{
+            margin-bottom: 10px;
+            margin-top: 15px;
+            font-size: 24px;
+            font-weight: 600;
+        }
+        .currency-container input{
+            height: 20px;
+            padding: 5px;
+            text-align: center;
+            width: 100px;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+        .currency-container button{
+            margin: 10px auto 0px auto;
+            border-radius: 5px;
+            border: none;
+            padding: 5px 10px;
+            font-size: 18px;
+            font-weight: 600;
+            color: white;
+            background-color: hsl(120, 99%, 38%);
+        }
+        .currency-container button:hover{
+            background-color: hsl(134, 100%, 41%);
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1>Interest Calculator.</h1>
+        <section class="container">
+            <div class="currency-container">
+                <p>Principal Amount:</p>
+                <input id="p-amount" type="number" value="1000">
+                <p>Interest Rate:</p>
+                <input id="i-rate" type="number" value="2.5">
+                <p>Years:</p>
+                <input id="year" type="number" value="1"><br>
+                <button onclick="calculate()">Submit</button>
+                <p id="output"></p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        
+        function calculate(){
+            let out = document.getElementById('output')
+        let pAmount = Number(document.getElementById('p-amount').value)
+        let iRate = Number(document.getElementById('i-rate').value)/100;
+        let year = Number(document.getElementById('year').value)
+            let result = pAmount * Math.pow((1+iRate/ 1),1*year)
+            out.textContent = `Total: ${result.toLocaleString('hi-In',{style:'currency',currency:'INR'})}`
+        }
+    </script>
+</body>
+
+</html>
